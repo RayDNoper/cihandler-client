@@ -1,0 +1,41 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name/codename"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchContact()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" name="contactlist">
+    <h4>Contact list</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let contact of contacts; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveContact(contact, i)"
+      >
+        {{ contact.name }} | {{ contact.codename }}
+      </li>
+    </ul>
+    <a routerLink="/add" class="nav-link float-end btn btn-light">Add new contact</a>
+  </div>
+  <div class="col-md-6" name="edit">
+    <app-contact-details
+      [viewMode]="false"
+      [currentContact]="currentContact"
+    ></app-contact-details>
+  </div>
+</div>

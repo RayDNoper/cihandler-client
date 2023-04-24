@@ -1,0 +1,59 @@
+<div *ngIf="viewMode; else editable" name="editableblock">
+
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentContact.id" class="edit-form">
+    <h4>Edit Contact</h4>
+    <form>
+      <div class="input-group">
+        <div class="input-group-prepend col-5">
+          <label for="name" class="input-group-text col-12">Name</label>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentContact.name"
+          name="name"
+        />
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend col-5">
+          <label for="codename" class="input-group-text col-12">Codename</label>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="codename"
+          [(ngModel)]="currentContact.codename"
+          name="codename"
+        />
+      </div>
+      <div class="input-group">
+        <div class="input-group-prepend col-5">
+          <label for="contactPhone" class="input-group-text col-12">Contact phone</label>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          id="contactPhone"
+          [(ngModel)]="currentContact.contactPhone"
+          name="contactPhone"
+        />
+      </div>
+
+    </form>
+    <div class="float-end">
+      <button
+        type="submit"
+        class="btn btn-warning mb-2"
+        (click)="updateContact()"
+      >
+        Update
+      </button>
+    </div>
+    <p>{{ message }}</p>
+  </div>
+
+</ng-template>
